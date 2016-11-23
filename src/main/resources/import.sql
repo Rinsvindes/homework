@@ -1,0 +1,1 @@
+insert into BLOCKED_PERSONAL_ID(PERSONAL_ID)values('TEST');

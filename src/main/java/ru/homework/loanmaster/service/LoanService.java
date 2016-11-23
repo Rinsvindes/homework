@@ -9,6 +9,8 @@ import ru.homework.loanmaster.model.Loan;
 import ru.homework.loanmaster.util.MoneyUtil;
 import ru.homework.loanmaster.util.TermRate;
 import ru.homework.loanmaster.util.TermUtil;
+import ru.homework.loanmaster.validation.ErrorCode;
+import ru.homework.loanmaster.validation.ValidationException;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,10 +20,18 @@ public class LoanService {
     @Resource
     private LoanRepository loanRepository;
     @Resource
+    private BlackListService blackListService;
+    @Resource
     private CountryService countryService;
 
     public void applyLoan(Integer term, TermRate termRate, String amount, String currency,
-                          String personalId, String name, String surname) {
+                          String personalId, String name, String surname, String ip) {
+        if (blackListService.isPersonalIdBlocked(personalId)) {
+            throw new ValidationException(ErrorCode.BLOCKED);
+        }
+
+        String countryCode = countryService.getCountryCodeByIp(ip);
+
         Loan loan = new Loan();
         loan.setTerm(TermUtil.getTermByRate(term, termRate));
 
@@ -34,6 +44,7 @@ public class LoanService {
         loan.setPersonalId(personalId);
         loan.setName(name);
         loan.setSurname(surname);
+        loan.setCountryCode(countryCode);
 
         loanRepository.save(loan);
     }

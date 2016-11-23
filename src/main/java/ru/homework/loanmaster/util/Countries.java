@@ -10,7 +10,10 @@ public class Countries {
     private final static String IP_INFO_HOST = "http://ipinfo.io/";
     private final static String COUNTRY_SERVICE = "/country";
 
-    private static final int DEFAULT_TIMEOUT = 10000;
+    //TODO: property
+    private final static int DEFAULT_TIMEOUT = 1000;
+
+    public final static String UNKNOWN_VALUE = "undefined";
 
     public static String getCountryCodeByIp(String ip){
         if (!InetAddresses.isInetAddress(ip)) {

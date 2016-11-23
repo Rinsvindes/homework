@@ -19,5 +19,7 @@ public class ErrorCode {
 
     public static final ErrorCode SUCCESS = new ErrorCode(0, "SUCCESS");
     public static final ErrorCode INTERNAL_ERROR = new ErrorCode(1, "INTERNAL_ERROR");
+    public static final ErrorCode BLOCKED = new ErrorCode(2, "BLOCKED");
+    public static final ErrorCode BLOCKED_BY_COUNTRY_METRIC = new ErrorCode(3, "BLOCKED_BY_COUNTRY_METRIC");
 
 }

@@ -13,6 +13,7 @@ public class Loan implements Serializable {
     private String personalId;
     private String name;
     private String surname;
+    private String countryCode;
 
     @Id
     @Column(name = "ID")
@@ -78,5 +79,14 @@ public class Loan implements Serializable {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    @Column(name = "COUNTRY_CODE")
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 }

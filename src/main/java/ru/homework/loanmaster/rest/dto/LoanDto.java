@@ -11,6 +11,7 @@ public class LoanDto {
     private String personalId;
     private String name;
     private String surname;
+    private String countryCode;
 
     public LoanDto(Loan loan) {
         this.id = loan.getId();
@@ -19,6 +20,7 @@ public class LoanDto {
         this.personalId = loan.getPersonalId();
         this.name = loan.getName();
         this.surname = loan.getSurname();
+        this.countryCode = loan.getCountryCode();
     }
 
     public Long getId() {
@@ -67,5 +69,13 @@ public class LoanDto {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 }
